@@ -1,0 +1,92 @@
+name: AI Bot Handler - Minimal Test
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+  contents: write
+
+jobs:
+  # 第一步：验证工作流是否真的被触发
+  verify-trigger:
+    name: Verify Workflow Trigger
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: ✅ Workflow Triggered Successfully
+        run: |
+          echo "=================================================="
+          echo "✅ 工作流已被触发！"
+          echo "=================================================="
+          echo "触发时间: $(date)"
+          echo "事件: issue_comment"
+          echo "Issue: #${{ github.event.issue.number }}"
+          echo "评论者: ${{ github.event.comment.user.login }}"
+          echo "评论内容: ${{ github.event.comment.body }}"
+          echo "=================================================="
+  
+  # 第二步：处理 Bot 命令
+  handle-bot:
+    name: Handle Bot Command
+    runs-on: ubuntu-latest
+    needs: verify-trigger
+    if: contains(github.event.comment.body, '@activity-bot')
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r scripts/ai-bot/requirements.txt
+      
+      - name: Extract URL from comment
+        id: url
+        run: |
+          COMMENT="${{ github.event.comment.body }}"
+          # 从评论中提取 URL
+          URL=$(echo "$COMMENT" | grep -oE 'https?://[^ ]+' | head -1)
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "Found URL: $URL"
+      
+      - name: Run Bot Handler
+        if: steps.url.outputs.url != ''
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_MODELS_TOKEN: ${{ secrets.GH_MODELS_TOKEN }}
+          BOT_URL: ${{ steps.url.outputs.url }}
+        run: |
+          cd scripts/ai-bot
+          python bot_handler_simple.py
+      
+      - name: Post success comment
+        if: success() && steps.url.outputs.url != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Bot 处理成功！\n\n查看 Actions 日志了解详细信息。'
+            });
+      
+      - name: Post error comment
+        if: failure() && steps.url.outputs.url != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Bot 处理失败。请检查 Actions 日志了解错误详情。'
+            });
