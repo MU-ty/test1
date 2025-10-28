@@ -1,0 +1,819 @@
+- title: 腾讯开源活动
+  description: 如何用开源经历敲开大厂之门？从“学生开源贡献者”到“腾讯工卡”，畅聊升级打怪之路!
+  category: activity
+  tags:
+    - 腾讯开源
+    - 开源经历
+  events:
+    - year: 2025
+      id: tencentopensource2025
+      link: https://mp.weixin.qq.com/s/1IMxH4FcZQIu--Key6tA1g
+      timeline:
+        - deadline: '2025-07-19T19:00:00'
+          comment: '活动开始'
+      timezone: Asia/Shanghai
+      date: 2025年7月19日
+      place: 线上
+
+- title: 醒源大讲堂第一期
+  description: 醒源大讲堂是由开源社主办的围绕开源治理与社区发展的系列线上专题讲座，会在每期邀请相关领域开源专家进行深入分享和交流互动。
+  category: activity
+  tags:
+    - 醒源大讲堂
+    - 人工智能开源
+  events:
+    - year: 2025
+      id: xingyuandajiangtang-ai2025
+      link: https://mp.weixin.qq.com/s/xD3P0m4XcYaoxi9vta1pvg
+      timeline:
+        - deadline: '2025-07-08T20:00:00'
+          comment: '活动开始'
+        - deadline: '2025-07-08T21:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 7 月 8 日
+      place: 线上
+
+- title: openEuler SIG-Arm Meetup 深圳站
+  description: openEuler SIG-Arm Meetup 深圳站，面向社区开发者和爱好者，分享 Arm 架构在开源领域的应用和发展。
+  category: activity
+  tags:
+    - openEuler
+    - Arm
+    - Meetup
+  events:
+    - year: 2025
+      id: openeulersigarmmeetup-shenzhen2025
+      link: https://mp.weixin.qq.com/s/FOKMP2gQRFZ-r2YhIF_hAw
+      timeline:
+        - deadline: '2025-07-18T13:00:00'
+          comment: '活动开始'
+        - deadline: '2025-07-18T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 7 月 18 日
+      place: 中国，深圳
+
+- title: OpenCamp 第一期 Docker 训练营
+  description: OpenCamp社区 × 腾讯云CNB平台合作举办。全程线上，免费教学
+  category: activity
+  tags:
+    - OpenCamp
+    - 腾讯云
+    - Docker
+  events:
+    - year: 2025
+      id: opencampdocker2025
+      link: https://opencamp.cn/Docker/camp/202501
+      timeline:
+        - deadline: '2025-06-29T00:00:00'
+          comment: '训练营开始'
+        - deadline: '2025-08-10T00:00:00'
+          comment: '训练营结束'
+      timezone: Asia/Shanghai
+      date: 2025年6月29日-8月10日（共6周）
+      place: 线上
+
+
+- title: openvela 首场城市沙龙
+  description: openvela 开源后首场城市沙龙北京站重磅来袭，小米核心技术团队将分享 openvela 开源 IoT 操作系统的技术内幕！
+  category: activity
+  tags:
+    - openvela
+    - 城市沙龙
+  events:
+    - year: 2025
+      id: openvelabeijing2025
+      link: https://mp.weixin.qq.com/s/kPpiIbnHpW-nus3FUrt4tw
+      timeline:
+        - deadline: '2025-07-05T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-07-05T18:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025年7月5日
+      place: 中国，北京
+
+- title: 甜“芯”代码局：RISC-V 与 openKylin 的开源狂欢派对
+  description: 由进迭时空与 openKylin 社区共同举办的开源狂欢派对。左手甜点、右手代码，在 RISC-V 与 openKylin 的开源世界里，边吃边玩边搞技术！
+  category: activity
+  tags:
+    - RISC-V
+    - openKylin
+    - 城市沙龙
+  events:
+    - year: 2025
+      id: spacemitopenkylin250703
+      link: https://forum.spacemit.com/t/topic/604
+      timeline:
+        - deadline: '2025-07-03T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-07-03T18:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 7 月 3 日
+      place: 中国，沈阳
+
+- title: openKylin Meetup 香港大学站
+  description: 深度拆解 AI 智能操作系统的核心技术奥秘，聚焦RISC-V架构如何重塑智算时代格局，共探其为操作系统创新带来的颠覆性机遇。
+  category: activity
+  tags:
+    - openKylin
+    - Meetup
+  events:
+    - year: 2025
+      id: openkylinmeetup-hku2025
+      link: https://mp.weixin.qq.com/s/b2AMVI_KNyJuQw7WnLPocQ
+      timeline:
+        - deadline: '2025-07-19T09:00:00'
+          comment: '活动开始'
+        - deadline: '2025-07-19T12:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025年7月19日
+      place: 中国，香港
+
+- title: openKylin Meetup 香港城市大学站
+  description: 与会嘉宾将分享 openKylin 在 AI 智能操作系统领域的最新研究成果，探讨 RISC-V 架构如何为操作系统创新带来颠覆性机遇。
+  category: activity
+  tags:
+    - openKylin
+    - Meetup
+  events:
+    - year: 2025
+      id: openkylinmeetup-cityuhk2025
+      link: https://www.openkylin.top/support/questionnaire.html?qid=3
+      timeline:
+        - deadline: '2025-07-20T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-07-20T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025年7月20日
+      place: 中国，香港
+
+- title: InfiniTensor 大模型与人工智能系统训练营
+  description: 由启元实验室与清华团队联合发起，旨在系统普及人工智能领域的关键知识，「线上直播授课+ 在线答疑 + 项目实践辅导」，确保每位同学都能获得充分成长。
+  category: activity
+  tags:
+    - 大模型
+    - 人工智能系统
+    - OpenCamp
+  events:
+    - year: 2025
+      id: opencamp-infinitensor-2025summer
+      link: https://opencamp.cn/InfiniTensor/camp/2025summer
+      timeline:
+        - deadline: '2025-07-20T23:59:59'
+          comment: '报名预热阶段结束，基础考试截止'
+        - deadline: '2025-07-21T00:00:00'
+          comment: '授课学习阶段开始'
+        - deadline: '2025-08-17T23:59:59'
+          comment: '授课学习阶段结束'
+        - deadline: '2025-08-18T00:00:00'
+          comment: '项目实践阶段开始'
+        - deadline: '2025-09-30T23:59:59'
+          comment: '项目实践阶段结束，训练营结营'
+      timezone: Asia/Shanghai
+      date: 2025 年 7 月 14 日 - 9 月 30 日
+      place: 线上
+
+- title: 源来喻见你系列活动 （二）| 线上操作系统讲座
+  description: 邀请两位主讲人分享操作系统社区运营和活动组织经验
+  category: activity
+  tags:
+    - 操作系统
+  events:
+    - year: 2025
+      id: opensourcemeetyu-2
+      link: https://mp.weixin.qq.com/s/rxi2JRg-HpXMECxmRvIQUg
+      timeline:
+        - deadline: '2025-07-19T19:30:00' 
+          comment: '活动开始'
+        - deadline: '2025-07-19T20:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 7 月 19 日 19:30 - 20:30
+      place: 线上 
+
+- title: World RISC-V Days Beijing
+  description: To bring the RISC-V community together globally to share in a synchronized one-day event, executed in the same week, worldwide.
+  category: activity
+  tags:
+    - RISC-V
+  events:
+    - year: 2025
+      id: risc-v-days-beijing-2025
+      link: https://mp.weixin.qq.com/s/JYZS2pRX201evWbtqB5uaA
+      timeline:
+        - deadline: '2025-08-08T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-08-08T18:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025年8月8日
+      place: 中国，北京
+
+- title: 开源鸿蒙城市技术沙龙深圳站
+  description: 沙龙聚焦开源鸿蒙平台上的AI技术应用，旨在构建开源鸿蒙端侧AI技术栈，促进驱动、框架与应用协同创新，为开发者、贡献者及集成方搭建交流合作平台，加速开源鸿蒙生态AI能力落地与智能终端潜能释放。
+  category: activity
+  tags:
+    - AI
+    - OpenHarmony
+    - 城市沙龙
+  events:
+    - year: 2025
+      id: openharmony-salon-shenzhen-2025
+      link: https://mp.weixin.qq.com/s/wuJREfpkormMnRvDC_0_CQ
+      timeline:
+        - deadline: '2025-08-09T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-08-09T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025年8月9日
+      place: 中国，深圳
+
+- title: Rust 编译器开源社区训练营
+  description: 训练营面向系统编程与编译技术爱好者，通过 18 周高强度实战，培训内容包括 Rust 基础知识、编译器基本原理、Rust 编译器架构学习和 Rust 编译器实战任务四个阶段课程，目标是培养能够深入理解并贡献 Rust 编译器（rustc）源码的工程师与研究者。
+  category: activity
+  tags:
+    - Rust
+    - OpenCamp
+  events:
+    - year: 2025
+      id: opencamp-rust-compiler-2025autumn
+      link: https://opencamp.ai/rustcompiler/camp/2025fall
+      timeline:
+        - deadline: '2025-08-04T00:00:00'
+          comment: '训练营开始'
+        - deadline: '2025-08-16T00:00:00'
+          comment: '导学阶段结束'
+        - deadline: '2025-10-18T00:00:00'
+          comment: '基础阶段结束'
+        - deadline: '2025-11-15T00:00:00'
+          comment: '专业阶段结束'
+        - deadline: '2025-12-20T00:00:00'
+          comment: '项目阶段结束'
+      timezone: Asia/Shanghai
+      date: 2025年8月4日-12月20日
+      place: 线上
+
+- title: 开源鸿蒙城市技术沙龙·北京站
+  description: 为响应国家对操作系统安全人才的迫切需求，深化产教融合进程，全力构建以关键核心技术为坚实根基的产业与人才良性互动生态，为此开源鸿蒙 PMC、北京邮电大学网络空间安全学院计划在北京举办基-开源鸿蒙的智能终端安全与实践赋能培训。
+  category: activity
+  tags:
+    - 终端安全
+    - OpenHarmony
+    - 城市沙龙
+  events:
+    - year: 2025
+      id: openharmony-salon-beijing-2025
+      link: https://mp.weixin.qq.com/s/6JHjzWrfF9pPbWXK9ljjoA
+      timeline:
+        - deadline: '2025-08-23T09:00:00'
+          comment: '活动开始'
+        - deadline: '2025-08-23T18:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025年8月23日
+      place: 中国，北京
+
+- title: WHLUG 开源咖啡局 | 8 月自由畅聊，等你来当主角！
+  description: WHLUG （武汉 Linux 用户组）由 deepin（深度）社区于 1997 年发起创立，创建的初衷是为武汉地区的 Linux 爱好者们提供一个不受外界干扰的技术讨论氛围，让每一个技术爱好者回归技术本质，构建武汉最纯粹的 Linux 技术讨论圈子，持续推动武汉本地开源社区文化的发展。
+  category: activity
+  tags:
+    - Deepin
+    - Linux用户组
+  events:
+    - year: 2025
+      id: whlug-8-2025
+      link: https://mp.weixin.qq.com/s/SW0zGvJoMqrdqGvMF46OAw
+      timeline:
+        - deadline: '2025-08-23T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-08-23T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025年8月23日
+      place: 中国，武汉
+
+- title: openEuler sig-Long 异构融合技术 Meetup 北京站
+  description: 以异构融合技术为核心，深入探讨异构融合技术的发展与落地。
+  category: activity
+  tags:
+    - openEuler
+    - Meetup
+  events:
+    - year: 2025
+      id: openeuler-sig-long-meetup-beijing-2025
+      link: https://mp.weixin.qq.com/s/QABou9m5QwHVz-sG77kIEA
+      timeline:
+        - deadline: '2025-08-22T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-08-22T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 8 月 22 日
+      place: 中国，北京
+
+- title: Shanghai vLLM Community Meetup
+  description: 代码不会说谎，但选择会一这一次，做率先吃到技术红利的人。让代码与灵感同频共振!本次活动云集行业顶尖专家，聚焦VLLM技术展开深度研讨，助力开发者精准把握前沿动态、深度参与开源生态建设。
+  category: activity
+  tags:
+    - vLLM
+    - Meetup
+  events:
+    - year: 2025
+      id: vllm-meetup-shanghai-2025
+      link: https://mp.weixin.qq.com/s/QHJA90fSEQRNp5oSsf2Sog
+      timeline:
+        - deadline: '2025-08-23T14:00:00'
+          comment: '活动开始'
+        - deadline: '2025-08-23T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 8 月 23 日
+      place: 中国，上海
+
+
+- title: vLLM Shenzhen Meetup
+  description: 重磅汇聚来自腾讯、华为、北京大学、上海交大等多方技术团队的一线专家，聚焦vLLM在算子优化、模型推理部署以及强化学习融合等方面的最新进展与实战经验，与众多开发者共同探索高效、高性能推理的下一站。
+  category: activity
+  tags:
+    - vLLM
+    - Meetup
+  events:
+    - year: 2025
+      id: vllm-meetup-深圳-2025
+      link: https://mp.weixin.qq.com/s/QHJA90fSEQRNp5oSsf2Sog
+      timeline:
+        - deadline: '2025-08-30T13:30:00'
+          comment: '活动开始'
+        - deadline: '2025-08-30T18:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 8 月 30 日
+      place: 中国，深圳
+
+- title: openEuler 多样性算力 Meetup 北京站
+  description: 进一步聚焦多样性算力，汇聚各方力量，深入交流创新实践与技术成果，携手推动多样性算力的落地与生态繁荣。
+  category: activity
+  tags:
+    - openEuler
+    - Meetup
+  events:
+    - year: 2025
+      id: openeuler-diverse-computing-meetup-beijing-2025
+      link: https://mp.weixin.qq.com/s/5O3q6-dEa9qJ5ScDVUOWSA
+      timeline:
+        - deadline: '2025-09-06T13:00:00'
+          comment: '活动开始'
+        - deadline: '2025-09-06T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai
+      date: 2025 年 9 月 6 日
+      place: 中国，北京
+
+- title: TiDB 社区活动（西安站）
+  description: TiDB 社区活动来到西安，探讨智慧城市、智能制造（半导体）、疾控、生活服务等行业的核心系统数据库选型和架构升级，以及 TiDB 对业务的实际赋能。
+  category: activity
+  tags:
+    - TiDB
+    - 数据库
+  events:
+    - year: 2025 # 年份
+      id: tidb-xian-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/Vsx790WS_vITp3Dt0OpiXQ # 链接
+      timeline:
+        - deadline: '2025-09-13T13:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '签到 & 玩游戏赢周边 & 畅聊时间' # 日期说明
+        - deadline: '2025-09-13T13:50:00'
+          comment: '活动正式开始'
+        - deadline: '2025-09-13T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 9 月 13 日 13:00 - 17:30 # 人类可读的日期范围
+      place: 中国，西安
+
+
+- title: Chitu First Meetup
+  description: 清程极智多位技术专家将分享 Chitu 项目最新技术成果，并聚焦 Chitu 应用交付与部署，分享实际操作经验与 Chitu 项目最佳实践，社区的开发者也将分享在使用 Chitu 过程中的心得体会和应用案例。
+  category: activity
+  tags:
+    - Chitu
+    - Meetup
+  events:
+    - year: 2025 # 年份
+      id: chitu-first-meetup-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/iTpI2VGnKmGykErd_KDQ2g # 链接
+      timeline:
+        - deadline: '2025-09-13T13:30:00'
+          comment: '活动开始时间'
+        - deadline: '2025-09-13T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 9 月 13 日 13:30 - 17:00 # 人类可读的日期范围
+      place: 中国，杭州 # 地点
+      
+- title: 模力方舟 AI 应用开发沙龙第七站（成都站）
+  description: 模力方舟 AI 应用开发沙龙即将迎来第七站——成都。本期沙龙聚焦 AI 应用在开发范式、算力架构、交互设计与开源社区等关键环节中的跨场景创新实践，汇聚产业领袖、技术专家与一线开发者，推动川渝地区开发者生态建设与产业智能化升级。
+  category: activity
+  tags:
+    - AI
+    - 城市沙龙
+  events:
+    - year: 2025 # 年份
+      id: ai-salon-chengdu-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/E_Cm8I8Ap5oPZgoLb8ma_g # 链接
+      timeline:
+        - deadline: '2025-09-20T13:30:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-09-20T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 09 月 20 日 13:30 - 17:00 # 人类可读的日期范围
+      place: 中国，成都
+
+- title: Gitcode 开源星期六第二期
+  description: 由 GitCode 开源社区倾力打造的「开源星期六」线下开发者交流活动第二期即将上线。本次交流活动以三方库鸿蒙化为核心主题，诚邀研究三方库移植、探索鸿蒙、热爱开源的伙伴参与，共同探讨技术碰撞，推动开源生态发展。
+  category: activity
+  tags:
+    - 三方库移植
+    - 鸿蒙
+    - 技术交流
+  events:
+    - year: 2025 # 年份
+      id: open-saturday-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/TAZh0b_v5BzWrh4KgLeyQQ # 链接
+      timeline:
+        - deadline: '2025-09-10T00:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '报名开始' # 日期说明
+        - deadline: '2025-09-12T20:00:00'
+          comment: '报名截止'      
+        - deadline: '2025-09-13T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-09-13T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 09 月 13 日 14:00 - 17:00 # 人类可读的日期范围
+      place: 中国，深圳
+
+- title: CCF 开源高校行-黑龙江科技大学
+  description: CCF 开源高校行-黑龙江科技大学「开源大咖和你一起，感悟开源」。“开源高校行”是 CCF (中国计算机学会)开源发展技术委员会教育组开展的活动，旨在高校加强开源文化宣传和开源人才培养，活动包含开源课堂、开源项目、开源论坛等多种类型。
+  category: activity
+  tags:
+    - 开源
+    - CCF
+  events:
+    - year: 2025 # 年份
+      id: ccf-open-source-college-HLJUST-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/ZMeLsm3EuxEPKYt-LSwMcw # 链接
+      timeline:
+        - deadline: '2025-09-20T14:30:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-09-20T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 09 月 20 日 14:30 - 17:00 # 人类可读的日期范围
+      place: 中国，哈尔滨
+
+- title: openGauss Meetup 成都站
+  description: openGauss 社区将于9月27日在成都举办 Meetup，分享数据库在向量数据、RISC-V 生态及企业应用等创新实践，推动技术交流与生态发展。
+  category: activity
+  tags:
+    - openGauss
+    - 数据库
+  events:
+    - year: 2025 # 年份
+      id: openGauss-Meetup-2025-Chengdu # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/heYxLP9-vKz6TYTEHZ2-qw # 链接
+      timeline:
+        - deadline: '2025-09-27T13:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-09-27T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 09 月 27 日 13:00 - 17:00 # 人类可读的日期范围
+      place: 中国，成都
+
+- title: openEuler & openGauss Meetup 西安站
+  description: OpenAtom openEuler（简称：“openEuler”或“开源欧拉”）、openGauss 社区、西北工业大学联合举办的 openEuler & openGauss Meetup 将在西安举行，诚邀数据库开发者、操作系统爱好者及企业技术专家共同参与！  
+  category: activity
+  tags:
+    - openGauss
+    - openEuler
+    - 数据库
+    - 操作系统
+  events:
+    - year: 2025 # 年份
+      id: openGauss-openEuler-Meetup-2025-Xian # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/4-N0QoyecGq-B4rVD3sS7Q # 链接
+      timeline:
+        - deadline: '2025-09-26T13:30:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-09-26T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 09 月 26 日 # 人类可读的日期范围
+      place: 中国，西安
+
+- title: openEuler 云原生开源中间件 Meetup 武汉站
+  description: openEuler 云原生开源中间件 Meetup 武汉站将在武汉职业技术大学关山校区召开，专家将分享基于轻舟 API 的高效开发以及有关 TongRDS 中间件有关的 openEuler 开源中间件技术。
+  category: activity
+  tags:
+    - openEuler
+    - 中间件
+  events:
+    - year: 2025 # 年份
+      id: openEuler-middleware-Meetup-2025-Wuhan # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/f_w1lNaYU3H2nu_q6R-B0A # 链接
+      timeline:
+        - deadline: '2025-09-25T13:45:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-09-25T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 09 月 25 日 # 人类可读的日期范围
+      place: 中国，武汉
+
+- title: openvela 城市沙龙（上海站）
+  description: 由 openvela 开源社区主办的 openvela 城市沙龙·上海站即将开启，聚焦物联网操作系统前沿技术演进与产业级典型落地案例。本次沙龙邀请了 AIoT 产业链技术专家、资深开源开发者及行业领军企业代表，共同探讨 AIoT 开源操作系统的未来发展方向，旨在推动 AIoT 技术落地与场景拓展，加速 AIoT 产业生态的繁荣生长。
+  category: activity
+  tags:
+    - openvela
+    - AIoT
+    - 物联网
+  events:
+    - year: 2025 # 年份
+      id: openvela-shanghai-salon # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/8CX7qxVHCvb6e1K4Ya427A # 链接
+      timeline:
+        - deadline: '2025-09-20T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-09-20T18:00:00'
+          comment: '活动结束'      
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 9 月 20 日 # 人类可读的日期范围
+      place: 中国，上海
+
+- title: CCF 开源高校行——哈尔滨工程大学、哈尔滨工业大学
+  description: 在数字化转型的浪潮中，开源人才的培养是信息技术创新发展的重要根基，高校学子作为我国开源生态的源头活水备受重视。9 月 22 日，CCF 开源发展技术委员会 “开源高校行” 暨红山开源 × openKylin 高校行活动将走进哈尔滨工程大学和哈尔滨工业大学，与两校师生交流分享开源经验，共同推进开源教育，建立产学研用一体化开源创新人才培养体系
+  category: activity
+  tags:
+    - CCF
+  events:
+    - year: 2025 # 年份
+      id: ccf-open-source-tour-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/fVCftOIV491w3Hjibq9EIg # 链接
+      timeline:
+        - deadline: '2025-09-22T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '哈尔滨工程大学站开始' # 日期说明
+        - deadline: '2025-09-22T16:30:00'
+          comment: '哈尔滨工程大学站结束'      
+        - deadline: '2025-09-22T19:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '哈尔滨工业大学站开始' # 日期说明
+        - deadline: '2025-09-22T20:00:00'
+          comment: '哈尔滨工业大学站结束'     
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 9 月 22 日 # 人类可读的日期范围
+      place: 中国，哈尔滨
+
+- title:  CCF 开源高校行——深圳技术大学、深圳大学、中山大学
+  description: CCF 开源发展技术委员会“开源高校行”活动将于 9 月 26 日- 27 日走进深圳技术大学、深圳大学和中山大学。本次活动由红山开源平台、openKylin、粤港澳大湾区数字经济研究院等单位共同组织，旨在与广大师生交流分享开源经验，共同推进开源教育，建立产学研用一体化开源创新人才培养体系。
+  category: activity
+  tags:
+    - CCF
+  events:
+    - year: 2025 # 年份
+      id: ccf-open-source-tour-shenzhen-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/LcS6zIfkRgT_PZ5NqqRIGw # 链接
+      timeline:
+        - deadline: '2025-09-26T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '深圳技术大学站开始' # 日期说明
+        - deadline: '2025-09-26T16:30:00'
+          comment: '深圳技术大学站结束'      
+        - deadline: '2025-09-26T19:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '深圳大学站开始' # 日期说明
+        - deadline: '2025-09-26T21:30:00'
+          comment: '深圳大学站结束' 
+        - deadline: '2025-09-27T15:30:00' # 关键日期 (ISO 8601 格式)
+          comment: '中山大学站开始' # 日期说明
+        - deadline: '2025-09-27T17:30:00'
+          comment: '中山大学站结束' 
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 9 月 26 日 - 2025 年 9 月 27 日 # 人类可读的日期范围
+      place: 中国，深圳
+
+- title: 开源 × AI × 游戏——新世代开发者的技术狂欢
+  description: 活动邀请飞桨、BiliNote、昆明游戏开发者、SRC 安全社区、开源游戏引擎 Dora SSR 的开发者们，共同带来一场「AI × 游戏 × 开源」的跨界分享。活动包括 AI 文档智能、开源工具、游戏主机开发、安全逆向测试和开源文化等多个主题，适合技术极客、开源贡献者和游戏爱好者参加。
+  category: activity
+  tags:
+    - AI
+    - 游戏开发
+  events:
+    - year: 2025 # 年份
+      id: ai-game-open-source-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/BIwPL11fWPO1WRRZ1-Tecw # 链接
+      timeline:
+        - deadline: '2025-10-18T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-18T17:00:00'
+          comment: '活动结束'      
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 18 日 # 人类可读的日期范围
+      place: 中国，昆明
+
+- title: 开源 AI 基础设施论坛 - “国芯+国模”下开源 AI Infra 的机遇与挑战 | CNCC
+  description: 本次论坛聚焦开源 AI 基础设施，旨在开源模式下，通过技术协同与生态共建，推动行业降本增效与创新突破。论坛将从 AI Infra 开源进展，开源大模型训练和推理技术解析、大模型技术体系开源开放分级评估规范、GPU 开源生态建设、云原生 Infra Services 等各个维度进行深度探讨。
+  category: activity
+  tags:
+    - AI
+    - GPU
+    - 云原生
+  events:
+    - year: 2025 # 年份
+      id: open-ai-infra-forum-cncc-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/tKV3V_4Opjd0T42qU_DOIg # 链接
+      timeline:
+        - deadline: '2025-10-22T00:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-25T23:59:59'
+          comment: '活动结束'      
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 22 日# 人类可读的日期范围
+      place: 中国，哈尔滨
+
+- title: deepin & GitCode Meetup - 大湾区开发者盛会
+  description: deepin 联合 GitCode 在深圳举办一场面向未来的开发者盛会，旨在汇聚一线开发者、贡献者、生态推动者，共同探讨操作系统技术的生态未来。活动内容包括生态视野、内核视角、开发实践等主题演讲，以及茶歇、抽奖和自由交流环节。
+  category: activity
+  tags:
+    - deepin
+    - GitCode
+  events:
+    - year: 2025 # 年份
+      id: deepin-gitcode-meetup-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/NDztoW6Tqx-srRZiNWgNyQ # 链接
+      timeline:
+        - deadline: '2025-10-18T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-18T17:00:00'
+          comment: '活动结束'      
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 18 日 # 人类可读的日期范围
+      place: 中国，深圳
+
+- title: openEuler Compiler SIG Meetup 北京站
+  description: openEuler Compiler SIG Meetup 北京站将在北京中关村理工大学亚朵 S 酒店召开，专家将分享 openEuler Compiler SIG 运作介绍以及 AI 图编译技术等内容。
+  category: activity
+  tags:
+    - openEuler
+    - 编译器
+  events:
+    - year: 2025 # 年份
+      id: openEuler-compiler-sig-Meetup-2025-Beijing # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/qJnabiweOMMYG1k4JFpXYA # 链接
+      timeline:
+        - deadline: '2025-10-16T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-16T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 16 日 # 人类可读的日期范围
+      place: 中国，北京
+
+- title: 开源川行 · 西南石油大学站
+  description: GitCode 将与西南石油大学、华为云联合举办「开源川行第三站——走进西南石油大学」主题技术沙龙！GitCode 将助力西南石油大学开源社团建设，推动校园开源文化深入发展。华为云等企业现场设立展台，提供实习/内推机会，链接学子与行业。开源社区嘉宾带领现场编码，零距离感受开源项目贡献流程。
+  category: activity
+  tags:
+    - GitCode
+    - 华为云
+  events:
+    - year: 2025 # 年份
+      id: gitcode-opensource-sichuan-swpu-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/-7NXDb4jwqGQt6aJncEQOw # 链接
+      timeline:
+        - deadline: '2025-10-16T16:30:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-16T18:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 16 日 # 人类可读的日期范围
+      place: 中国，成都
+
+- title: openEuler 具身智能技术 Meetup 西安站
+  description: OpenAtom openEuler Embedded SIG 联合 AGIROS 共性算法框架 SIG 举办的具身智能技术 Meetup 将在西安站举行。本次 Meetup 将围绕具身智能相关技术，包括但不限于 ROS、AI 框架、OS 底座、具身 Agent、行业优秀案例以及行业发展趋势等进行分享及探讨。
+  category: activity
+  tags:
+    - openEuler
+    - 具身智能
+  events:
+    - year: 2025 # 年份
+      id: openEuler-embodied-intelligence-Meetup-2025-Xian # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/_FaVuHIqjt1mZawibPQmew # 链接
+      timeline:
+        - deadline: '2025-10-23T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-23T17:00:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 23 日 # 人类可读的日期范围
+      place: 中国，西安
+
+- title: 华为开源生态大讲堂第五讲：浅谈开源操作系统的生态建设
+  description: 华为开源特邀中科院软件所副所长武延军在本次直播中，探讨开源软件生态的痛点与解题之道，作为openEuler、OpenHarmony开源社区，以及RISC-V指令集生态的深度参与者，整理近年来实践中的一些心得体会，从开源软件供应链的角度，梳理开源操作系统生态建设的痛点、难点和要素，并提出一些可能的路径，希望能够助力中国操作系统的可持续高质量发展。
+  category: activity
+  tags:
+    - 华为开源
+    - 操作系统
+  events:
+    - year: 2025 # 年份
+      id: huawei-opensource-oseco-5th-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/WZtz7t7PrSxKMlrbmkt9IA # 链接
+      timeline:
+        - deadline: '2025-10-17T17:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '讲堂开始' # 日期说明
+        - deadline: '2025-10-17T18:00:00'
+          comment: '讲堂结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 17 日 # 人类可读的日期范围
+      place: 中国，北京
+
+- title: 开源鸿蒙城市技术沙龙·北京站——开源鸿蒙 & RISC-V 技术融合交流会
+  description: 为推动 OpenHarmony 和 RISC-V 两大生态深度协同、促进技术交流与资源整合，由开源鸿蒙项目管理委员会、开源鸿蒙 RISC-V SIG、如意 RISC-V 原生社区联合主办的 “开源鸿蒙城市技术沙龙·北京站——开源鸿蒙 & RISC-V 技术融合交流会”将于10月22日在北京正式启动。
+  category: activity
+  tags:
+    - 开源鸿蒙
+    - RISC-V
+  events:
+    - year: 2025 # 年份
+      id: openharmony-riscv-techsalon-beijing-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/8-eWQuKh9LuW07re-NcAEw # 链接
+      timeline:
+        - deadline: '2025-10-22T14:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-22T17:30:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 22 日 # 人类可读的日期范围
+      place: 中国，北京
+
+- title: 开放原子校源行（上海站）
+  description: 开放原子校源行（上海站）将在复旦大学邯郸校区重磅开启，院士专家、高校代表、头部企业大咖与上海多所高校师生齐聚，以思想碰撞点燃开源热情，以实践探索赋能人才成长。推动用开源贡献来验证学生能力的开源人才评价改革试点工作落地，复旦大学首次评选并表彰 “开源先锋”。聚焦开源人工智能领域，深化高校与产业合作实践。混元等多个顶尖开源项目走进复旦大学，为师生提供一线项目实践机会。院士领衔，联合一线开源人工智能社区专家组成权威阵容，深度解读行业前沿技术，破解技术发展核心密码。
+  category: activity
+  tags:
+    - 开放原子
+    - 校源行
+  events:
+    - year: 2025 # 年份
+      id: openatom-campus-shanghai-2025 # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/IY9IzizCuETLKG-9UfCqIA # 链接
+      timeline:
+        - deadline: '2025-10-15T09:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '主论坛开始' # 日期说明
+        - deadline: '2025-10-15T11:40:00'
+          comment: '主论坛结束'
+        - deadline: '2025-10-15T14:00:00'
+          comment: '动手实践课堂开始'
+        - deadline: '2025-10-15T16:30:00'
+          comment: '动手实践课堂结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 15 日 # 人类可读的日期范围
+      place: 中国，上海
+
+- title: 多模态数据湖与 Agentic AI——构建企业智能基座技术研讨会
+  description: 聚焦企业智能化核心挑战，通过多模态数据湖与 Agentic AI 技术闭环，提供端到端智能基座解决方案。活动涵盖数据平台重构、AI 开发范式革新、向量数据库应用及多模态集成实践，包含主题演讲与动手实验环节。
+  category: activity
+  tags:
+    - Agentic AI
+    - 企业智能化
+  events:
+    - year: 2025 # 年份
+      id: multimodal-agentic-ai-beijing-2025   # 全局唯一的ID
+      link: https://mp.weixin.qq.com/s/49GZZDKLzYfpbO2K1IJpMw # 链接
+      timeline:
+        - deadline: '2025-10-18T13:30:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-10-18T17:30:00'
+          comment: '活动结束'      
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 10 月 18 日 # 人类可读的日期范围
+      place: 中国，北京
+
+- title: OpenTenBase 城市行成都站
+  description: OpenTenBase 城市行将走进成都！我们特别邀请多位数据库领域资深专家，与成都的开发者朋友、数据库技术爱好者齐聚一堂，深度拆解 OpenTenBase 5.0 的新架构逻辑、解读实用新特性，还会分享真实场景下的实践应用案例，更将共同展望社区未来发展方向，干货满满，不容错过！  
+  category: activity
+  tags:
+    - OpenTenBase
+  events:
+    - year: 2025 # 年份
+      id: opentenbase-chengdu-2025  #全局唯一的ID
+      link: https://mp.weixin.qq.com/s/qyl-VRB7AN3HTM-rGotI5Q # 链接
+      timeline:
+        - deadline: '2025-11-01T13:00:00' # 关键日期 (ISO 8601 格式)
+          comment: '活动开始' # 日期说明
+        - deadline: '2025-11-01T17:40:00'
+          comment: '活动结束'
+      timezone: Asia/Shanghai # 所在时区
+      date: 2025 年 11 月 1 日 # 人类可读的日期范围
+      place: 中国，成都
