@@ -35,18 +35,14 @@ jobs:
       
       - name: Prepare activity data
         run: |
-          # Create temporary file with activity data
-          cat > /tmp/activity.txt << EOF
-          
-- title: "Activity from Issue"
-  description: "Activity extracted and added automatically"
-  start_date: "2024-01-01"
-  end_date: "2024-01-01"
-  location: "Online"
-  url: "https://github.com"
-  tags: ["auto-extracted"]
-EOF
-          cat /tmp/activity.txt >> data/activities.yml
+          echo "" >> data/activities.yml
+          echo "- title: \"Activity from Issue\"" >> data/activities.yml
+          echo "  description: \"Activity extracted and added automatically\"" >> data/activities.yml
+          echo "  start_date: \"2024-01-01\"" >> data/activities.yml
+          echo "  end_date: \"2024-01-01\"" >> data/activities.yml
+          echo "  location: \"Online\"" >> data/activities.yml
+          echo "  url: \"https://github.com\"" >> data/activities.yml
+          echo "  tags: [\"auto-extracted\"]" >> data/activities.yml
       
       - name: Commit and push
         run: |
