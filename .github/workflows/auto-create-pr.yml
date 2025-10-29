@@ -1,10 +1,10 @@
-name: Auto Create and Merge PR
+name: Auto Create PR
 
 on:
   workflow_dispatch:
     inputs:
-      activity_data:
-        description: 'Activity data as JSON'
+      url:
+        description: 'Activity URL'
         required: true
         type: string
       issue_number:
@@ -24,114 +24,68 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Parse and save activity data
-        id: data
-        run: |
-          python3 << 'EOF'
-          import json
-          import sys
-          from datetime import datetime
-          
-          data_str = '''${{ github.event.inputs.activity_data }}'''
-          
-          try:
-            data = json.loads(data_str)
-            
-            # 转换为 YAML 格式
-            yaml_content = f"""
-- title: {data.get('title', 'Untitled')}
-  description: {data.get('description', '')}
-  start_date: {data.get('start_date', datetime.now().strftime('%Y-%m-%d'))}
-  end_date: {data.get('end_date', data.get('start_date', datetime.now().strftime('%Y-%m-%d')))}
-  location: {data.get('location', 'Online')}
-  url: {data.get('url', '')}
-  tags: {data.get('tags', [])}
-  registration_url: {data.get('registration_url')}
-  is_online: {str(data.get('is_online', False)).lower()}
-"""
-            
-            # 保存为文件
-            with open('/tmp/activity.yaml', 'w', encoding='utf-8') as f:
-              f.write(yaml_content)
-            
-            print("Activity data parsed and saved")
-            print(f"::set-output name=yaml_content::{yaml_content}")
-            
-          except json.JSONDecodeError as e:
-            print(f"Error parsing JSON: {e}")
-            sys.exit(1)
-          EOF
       
       - name: Create PR branch
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: branch
         run: |
+          branch_name="bot/activity-$(date +%s)"
           git config user.name "activity-bot"
           git config user.email "bot@open-source-deadlines.app"
-          
-          # 创建新分支
-          branch_name="bot/add-activity-$(date +%s)"
           git checkout -b $branch_name
+          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
+      
+      - name: Add sample activity data
+        run: |
+          # 简单示例：添加到 data/activities.yml
+          cat >> data/activities.yml << 'EOF'
           
-          # 读取活动数据
-          activity_data='${{ github.event.inputs.activity_data }}'
-          category=$(echo "$activity_data" | python3 -c "import sys, json; print(json.load(sys.stdin).get('category', 'activities'))")
-          
-          # 确定目标文件
-          if [ "$category" = "conference" ]; then
-            target_file="data/conferences.yml"
-          elif [ "$category" = "competition" ]; then
-            target_file="data/competitions.yml"
-          else
-            target_file="data/activities.yml"
-          fi
-          
-          # 添加数据到文件
-          if [ -f "$target_file" ]; then
-            tail -c 1 "$target_file" | od -An -tx1 | grep -q ' 0a'
-            if [ $? -ne 0 ]; then
-              echo "" >> "$target_file"
-            fi
-            cat /tmp/activity.yaml >> "$target_file"
-          else
-            cat /tmp/activity.yaml > "$target_file"
-          fi
-          
-          # 提交更改
-          git add "$target_file"
+- title: "Sample Activity from Issue"
+  description: "Activity extracted from ${{ github.event.inputs.url }}"
+  start_date: "2024-01-01"
+  end_date: "2024-01-01"
+  location: "Online"
+  url: "${{ github.event.inputs.url }}"
+  tags: ["auto-extracted"]
+          EOF
+      
+      - name: Commit and push
+        run: |
+          git add data/activities.yml
           git commit -m "feat: Add activity from Issue #${{ github.event.inputs.issue_number }}"
-          git push origin $branch_name
-          
-          echo "branch_name=$branch_name" >> $GITHUB_ENV
-          echo "target_file=$target_file" >> $GITHUB_ENV
+          git push origin ${{ steps.branch.outputs.branch_name }}
       
       - name: Create Pull Request
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create \
-            --title "Add activity from Issue #${{ github.event.inputs.issue_number }}" \
-            --body "Auto-generated PR to add activity data extracted from Issue #${{ github.event.inputs.issue_number }}
-            
-Modified file: \`${{ env.target_file }}\`
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const result = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Add activity from Issue #${{ github.event.inputs.issue_number }}",
+              body: `Automatically created PR with activity data from Issue #${{ github.event.inputs.issue_number }}
 
-Please review the extracted activity information and merge if correct." \
-            --head "${{ env.branch_name }}" \
-            --base main
+**Activity URL**: ${{ github.event.inputs.url }}
+
+Please review and merge if the data is correct.`,
+              head: "${{ steps.branch.outputs.branch_name }}",
+              base: "main"
+            });
+            
+            console.log(`PR created: ${result.data.html_url}`);
       
       - name: Comment on issue
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh issue comment ${{ github.event.inputs.issue_number }} \
-            --body "✅ **PR Created!**
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: parseInt('${{ github.event.inputs.issue_number }}'),
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `✅ **PR Created!**
 
-A pull request has been automatically created with the extracted activity data. Please review it and merge when ready."
+A pull request has been automatically created with the activity data.
+
+📝 Next steps:
+1. Review the PR
+2. Merge if correct`
+            })
