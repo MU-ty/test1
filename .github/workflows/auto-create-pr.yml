@@ -25,67 +25,61 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Create PR branch
-        id: branch
+      - name: Create branch and add data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_name="bot/activity-$(date +%s)"
+          # 配置 git
           git config user.name "activity-bot"
           git config user.email "bot@open-source-deadlines.app"
-          git checkout -b $branch_name
-          echo "branch_name=$branch_name" >> $GITHUB_OUTPUT
-      
-      - name: Add sample activity data
-        run: |
-          # 简单示例：添加到 data/activities.yml
-          cat >> data/activities.yml << 'EOF'
           
-- title: "Sample Activity from Issue"
+          # 创建新分支
+          branch_name="bot/activity-$(date +%s)"
+          git checkout -b "$branch_name"
+          
+          # 添加示例数据到 activities.yml
+          cat >> data/activities.yml << 'YAML_EOF'
+
+- title: "Activity from Issue"
   description: "Activity extracted from ${{ github.event.inputs.url }}"
   start_date: "2024-01-01"
   end_date: "2024-01-01"
   location: "Online"
   url: "${{ github.event.inputs.url }}"
   tags: ["auto-extracted"]
-          EOF
-      
-      - name: Commit and push
-        run: |
+YAML_EOF
+          
+          # 提交更改
           git add data/activities.yml
           git commit -m "feat: Add activity from Issue #${{ github.event.inputs.issue_number }}"
-          git push origin ${{ steps.branch.outputs.branch_name }}
+          git push origin "$branch_name"
+          
+          # 保存分支名称以供后续步骤使用
+          echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
       
-      - name: Create Pull Request
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const result = await github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: "Add activity from Issue #${{ github.event.inputs.issue_number }}",
-              body: `Automatically created PR with activity data from Issue #${{ github.event.inputs.issue_number }}
+      - name: Create PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Add activity from Issue #${{ github.event.inputs.issue_number }}" \
+            --body "Automatically created PR with activity data from Issue #${{ github.event.inputs.issue_number }}
 
 **Activity URL**: ${{ github.event.inputs.url }}
 
-Please review and merge if the data is correct.`,
-              head: "${{ steps.branch.outputs.branch_name }}",
-              base: "main"
-            });
-            
-            console.log(`PR created: ${result.data.html_url}`);
+Please review and merge if the data is correct." \
+            --head "${{ env.BRANCH_NAME }}" \
+            --base main
       
       - name: Comment on issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: parseInt('${{ github.event.inputs.issue_number }}'),
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `✅ **PR Created!**
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment ${{ github.event.inputs.issue_number }} \
+            --body "✅ **PR Created!**
 
 A pull request has been automatically created with the activity data.
 
 📝 Next steps:
 1. Review the PR
-2. Merge if correct`
-            })
+2. Merge if correct"
