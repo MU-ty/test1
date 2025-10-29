@@ -20,6 +20,11 @@ on:
         description: 'Issue number to post comment to'
         required: true
         type: number
+      auto_merge:
+        description: 'Auto merge PR if created'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   issues: write
@@ -27,8 +32,10 @@ permissions:
   pull-requests: write
 
 jobs:
-  handle-bot-command:
+  extract-activity:
     runs-on: ubuntu-latest
+    outputs:
+      activity_json: ${{ steps.extract.outputs.activity_json }}
     
     steps:
       - name: Checkout code
@@ -46,8 +53,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r scripts/ai-bot/requirements.txt
       
-      - name: Run Bot Handler
-        id: bot
+      - name: Extract activity data
+        id: extract
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -59,8 +66,16 @@ jobs:
         run: |
           cd scripts/ai-bot
           python bot_handler_simple.py > /tmp/bot_output.txt 2>&1
+          
+          # 从输出中提取 JSON
+          activity_json=$(grep "^::ACTIVITY_JSON::" /tmp/bot_output.txt | sed 's/^::ACTIVITY_JSON:://')
+          if [ -z "$activity_json" ]; then
+            echo "activity_json=" >> $GITHUB_OUTPUT
+          else
+            echo "activity_json=$activity_json" >> $GITHUB_OUTPUT
+          fi
+          
           cat /tmp/bot_output.txt
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
       
       - name: Post Comment
         if: always()
@@ -72,14 +87,14 @@ jobs:
             
             let commentBody = '';
             
-            // 读取 bot 输出
             if (fs.existsSync(path)) {
-              commentBody = fs.readFileSync(path, 'utf8').trim();
+              commentBody = fs.readFileSync(path, 'utf8')
+                .replace(/^::ACTIVITY_JSON::.*$/m, '')
+                .trim();
             }
             
-            // 如果没有输出或输出为空
             if (!commentBody) {
-              if ('${{ steps.bot.outcome }}' === 'failure') {
+              if ('${{ steps.extract.outcome }}' === 'failure') {
                 commentBody = '❌ Bot处理失败，请查看Actions日志了解详情。';
               } else {
                 commentBody = '⚠️ Bot运行完成，但没有输出。请查看Actions日志。';
@@ -92,4 +107,120 @@ jobs:
               repo: context.repo.repo,
               body: commentBody
             });
+  
+  create-pull-request:
+    needs: extract-activity
+    runs-on: ubuntu-latest
+    if: needs.extract-activity.outputs.activity_json != ''
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Parse and save activity data
+        env:
+          ACTIVITY_DATA: ${{ needs.extract-activity.outputs.activity_json }}
+        run: |
+          python3 << 'EOF'
+          import json
+          import os
+          from datetime import datetime
+          
+          data_str = os.environ['ACTIVITY_DATA']
+          data = json.loads(data_str)
+          
+          # 转换为 YAML 格式
+          yaml_content = f"""- title: {data.get('title', 'Untitled')}
+  description: {data.get('description', '')}
+  start_date: {data.get('start_date', datetime.now().strftime('%Y-%m-%d'))}
+  end_date: {data.get('end_date', data.get('start_date', datetime.now().strftime('%Y-%m-%d')))}
+  location: {data.get('location', 'Online')}
+  url: {data.get('url', '')}
+  tags: {data.get('tags', [])}
+  registration_url: {data.get('registration_url')}
+  is_online: {str(data.get('is_online', False)).lower()}
+"""
+          
+          with open('/tmp/activity.yaml', 'w', encoding='utf-8') as f:
+            f.write(yaml_content)
+          
+          # 保存 category
+          with open('/tmp/category.txt', 'w') as f:
+            f.write(data.get('category', 'activity'))
+          
+          print("Activity YAML prepared")
+          EOF
+      
+      - name: Create PR branch and commit
+        run: |
+          git config user.name "activity-bot"
+          git config user.email "bot@open-source-deadlines.app"
+          
+          # 创建新分支
+          branch_name="bot/add-activity-$(date +%s)"
+          git checkout -b $branch_name
+          
+          # 读取 category
+          category=$(cat /tmp/category.txt)
+          
+          # 确定目标文件
+          if [ "$category" = "conference" ]; then
+            target_file="data/conferences.yml"
+          elif [ "$category" = "competition" ]; then
+            target_file="data/competitions.yml"
+          else
+            target_file="data/activities.yml"
+          fi
+          
+          # 添加数据到文件
+          if [ -f "$target_file" ]; then
+            # 确保文件以空行结尾
+            if [ -s "$target_file" ]; then
+              tail -c 1 "$target_file" | od -An -tx1 | grep -q ' 0a' || echo "" >> "$target_file"
+            fi
+            cat /tmp/activity.yaml >> "$target_file"
+          else
+            mkdir -p $(dirname "$target_file")
+            cat /tmp/activity.yaml > "$target_file"
+          fi
+          
+          # 提交更改
+          git add "$target_file"
+          git commit -m "feat: Add activity from Issue #${{ github.event.inputs.issue_number }}"
+          git push origin $branch_name
+          
+          echo "branch_name=$branch_name" >> $GITHUB_ENV
+          echo "target_file=$target_file" >> $GITHUB_ENV
+      
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Add activity from Issue #${{ github.event.inputs.issue_number }}" \
+            --body "Auto-generated PR to add activity data extracted from Issue #${{ github.event.inputs.issue_number }}
+            
+Modified file: \`${{ env.target_file }}\`
+
+Please review the extracted activity information and merge if correct." \
+            --head "${{ env.branch_name }}" \
+            --base main \
+            --label "auto-generated,activity-data"
+      
+      - name: Comment PR created
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment ${{ github.event.inputs.issue_number }} \
+            --body "✅ **PR Created!**
+            
+A pull request has been automatically created with the extracted activity data. 
+Please review it [here](../../pulls) and merge when ready."
 

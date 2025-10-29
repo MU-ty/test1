@@ -1,0 +1,12 @@
+name: Test Trigger Only
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Event
+        run: echo "Trigger worked! Comment body ${{ github.event.comment.body }}"
