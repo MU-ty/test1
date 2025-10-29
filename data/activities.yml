@@ -817,3 +817,11 @@
       timezone: Asia/Shanghai # 所在时区
       date: 2025 年 11 月 1 日 # 人类可读的日期范围
       place: 中国，成都
+
+- title: "Activity from Issue"
+  description: "Activity extracted and added automatically"
+  start_date: "2024-01-01"
+  end_date: "2024-01-01"
+  location: "Online"
+  url: "https://github.com"
+  tags: ["auto-extracted"]
