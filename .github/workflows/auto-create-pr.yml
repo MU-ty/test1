@@ -25,21 +25,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Setup Git
+      - name: Setup Git and Create Branch
         run: |
           git config user.name "activity-bot"
           git config user.email "bot@open-source-deadlines.app"
-      
-      - name: Create PR branch
-        run: |
           BRANCH_NAME="bot/activity-$(date +%s)"
           git checkout -b "$BRANCH_NAME"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
       
-      - name: Add activity to YAML
+      - name: Prepare activity data
         run: |
-          cat >> data/activities.yml << 'ENDYAML'
-
+          # Create temporary file with activity data
+          cat > /tmp/activity.txt << EOF
+          
 - title: "Activity from Issue"
   description: "Activity extracted and added automatically"
   start_date: "2024-01-01"
@@ -47,7 +45,8 @@ jobs:
   location: "Online"
   url: "https://github.com"
   tags: ["auto-extracted"]
-ENDYAML
+EOF
+          cat /tmp/activity.txt >> data/activities.yml
       
       - name: Commit and push
         run: |
