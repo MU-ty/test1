@@ -67,7 +67,7 @@ jobs:
         if: steps.parse.outputs.command == 'extract'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_MODELS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_MODELS_TOKEN: ${{ secrets.GH_MODELS_TOKEN }}
           BOT_URL: ${{ steps.parse.outputs.url }}
           BOT_CATEGORY: ${{ steps.parse.outputs.category }}
           BOT_ISSUE: ${{ steps.parse.outputs.issue_number }}
