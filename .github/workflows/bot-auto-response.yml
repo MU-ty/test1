@@ -1,0 +1,111 @@
+name: Bot Auto Response
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  issues: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  handle-bot-command:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check if comment contains @activity-bot
+        id: check
+        run: |
+          comment="${{ github.event.comment.body }}"
+          if [[ "$comment" == *"@activity-bot"* ]]; then
+            echo "contains_bot_mention=true" >> $GITHUB_OUTPUT
+          else
+            echo "contains_bot_mention=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Extract URL from comment
+        if: steps.check.outputs.contains_bot_mention == 'true'
+        id: extract
+        run: |
+          comment="${{ github.event.comment.body }}"
+          
+          # 提取 URL (第一个 http:// 或 https://)
+          url=$(echo "$comment" | grep -oE 'https?://[^ ]+' | head -1)
+          
+          # 提取分类 (activity/conference/competition)
+          if [[ "$comment" == *"conference"* ]]; then
+            category="conference"
+          elif [[ "$comment" == *"competition"* ]]; then
+            category="competition"
+          else
+            category="activity"
+          fi
+          
+          echo "url=$url" >> $GITHUB_OUTPUT
+          echo "category=$category" >> $GITHUB_OUTPUT
+          
+          echo "URL: $url"
+          echo "Category: $category"
+      
+      - name: Checkout code
+        if: steps.extract.outputs.url != ''
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        if: steps.extract.outputs.url != ''
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        if: steps.extract.outputs.url != ''
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/ai-bot/requirements.txt
+      
+      - name: Run Bot Handler
+        if: steps.extract.outputs.url != ''
+        id: bot
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_MODELS_TOKEN: ${{ secrets.GH_MODELS_TOKEN }}
+          BOT_URL: ${{ steps.extract.outputs.url }}
+          BOT_CATEGORY: ${{ steps.extract.outputs.category }}
+          BOT_ISSUE: ${{ github.event.issue.number }}
+        run: |
+          cd scripts/ai-bot
+          python bot_handler_simple.py > /tmp/bot_output.txt 2>&1
+          cat /tmp/bot_output.txt
+      
+      - name: Post Bot Reply
+        if: steps.extract.outputs.url != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = '/tmp/bot_output.txt';
+            
+            let commentBody = '';
+            
+            if (fs.existsSync(path)) {
+              commentBody = fs.readFileSync(path, 'utf8').trim();
+            }
+            
+            if (!commentBody) {
+              if ('${{ steps.bot.outcome }}' === 'failure') {
+                commentBody = '❌ Bot处理失败，请查看Actions日志了解详情。';
+              } else {
+                commentBody = '⚠️ Bot处理完成，但没有输出。';
+              }
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: commentBody
+            });
