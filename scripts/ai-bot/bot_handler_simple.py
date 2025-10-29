@@ -8,6 +8,10 @@ import os
 import sys
 import json
 
+# 确保输出实时刷新
+sys.stdout = open(sys.stdout.fileno(), mode='w', buffering=1, encoding='utf-8')
+sys.stderr = open(sys.stderr.fileno(), mode='w', buffering=1, encoding='utf-8')
+
 # 禁用日志以保持输出清洁
 import logging
 logging.disable(logging.CRITICAL)
