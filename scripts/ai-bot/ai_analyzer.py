@@ -56,20 +56,29 @@ class ActivityAnalyzer:
 网页内容:
 {text[:3000]}
 
+重要提示：
+1. 仔细查找所有日期信息，包括"开始日期"、"截止日期"、"报名截止"、"活动时间"等
+2. 如果找不到具体日期，请查找年份、月份或季节信息
+3. 如果完全没有日期信息，请使用当前日期作为默认值
+4. 日期格式必须是 YYYY-MM-DD 或 YYYY-MM-DD HH:MM:SS
+
 请按以下格式返回JSON (只返回JSON，不要其他内容):
 {{
-    "title": "活动标题",
-    "description": "活动简介(1-2句话)",
-    "start_date": "开始日期 (YYYY-MM-DD 或 YYYY-MM-DD HH:MM:SS)",
-    "end_date": "结束日期 (YYYY-MM-DD 或 YYYY-MM-DD HH:MM:SS，如果没有就等于start_date)",
-    "location": "地点 (如果是线上活动写'Online')",
+    "title": "活动的标题/名称",
+    "description": "活动的简介或描述(1-2句话)",
+    "start_date": "开始日期 (YYYY-MM-DD格式，必须有值)",
+    "end_date": "结束日期 (YYYY-MM-DD格式，如果没有则等于start_date)",
+    "location": "举办地点 (如果是线上写'Online')",
     "url": "{url}",
-    "tags": ["标签1", "标签2"],
-    "registration_url": "报名链接 (如果没有就写null)",
-    "is_online": true/false
+    "tags": ["标签1", "标签2", "标签3"],
+    "registration_url": "报名链接 (如果没有写null)",
+    "is_online": true或false
 }}
 
-如果某些字段无法从文本中确定，使用合理的默认值或null。确保返回的JSON格式完整且有效。"""
+约束条件：
+- start_date 和 end_date 必须有值，不能是null
+- 如果找不到日期，使用 2024-01-01 作为默认值
+- 确保返回有效的JSON格式"""
     
     def _call_api(self, prompt: str) -> dict:
         """调用GitHub Models API"""

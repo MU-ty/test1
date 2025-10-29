@@ -81,9 +81,17 @@ def main():
         print("> No description available")
     print("")
     print("🗓️ **Date**")
-    start = data.get('start_date', 'N/A')
-    end = data.get('end_date', 'N/A')
-    print(f"> {start} to {end}")
+    start = data.get('start_date')
+    end = data.get('end_date')
+    
+    # 处理日期为 None 或 null 的情况
+    if start and start not in ['None', 'null', None]:
+        if end and end not in ['None', 'null', None] and end != start:
+            print(f"> {start} to {end}")
+        else:
+            print(f"> {start}")
+    else:
+        print("> Date not specified in the event page")
     print("")
     print("📍 **Location**")
     loc = data.get('location', 'N/A')
