@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Requirements file for AI Bot dependencies
-Install with: pip install -r requirements.txt
-"""
-
 # YAML处理
 PyYAML>=6.0
 
