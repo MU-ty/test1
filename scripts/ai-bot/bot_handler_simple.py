@@ -81,8 +81,9 @@ def main():
         'category': category
     }, ensure_ascii=False)
     
-    # 输出 JSON 供工作流使用
-    print(f"::ACTIVITY_JSON::{activity_json}")
+    # 不输出 JSON，防止乱码。改为输出到 stderr 用于调试
+    import sys as sys_module
+    sys_module.stderr.write(f"DEBUG: Activity JSON: {activity_json}\n")
     
     # 步骤4：格式化输出（供 Issue 评论显示）
     print("✅ **Activity Extracted Successfully!**")
