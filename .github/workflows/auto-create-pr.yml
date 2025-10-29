@@ -25,47 +25,71 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Create branch and add data
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Git
         run: |
-          # 配置 git
           git config user.name "activity-bot"
           git config user.email "bot@open-source-deadlines.app"
-          
+      
+      - name: Create PR branch and commit
+        env:
+          ACTIVITY_URL: ${{ github.event.inputs.url }}
+          ISSUE_NUM: ${{ github.event.inputs.issue_number }}
+        run: |
           # 创建新分支
-          branch_name="bot/activity-$(date +%s)"
-          git checkout -b "$branch_name"
+          BRANCH_NAME="bot/activity-$(date +%s)"
+          git checkout -b "$BRANCH_NAME"
           
-          # 添加示例数据到 activities.yml
-          cat >> data/activities.yml << 'YAML_EOF'
-
+          # 使用 Python 添加 YAML 数据
+          python3 << 'PYTHON_EOF'
+          import os
+          
+          url = os.environ['ACTIVITY_URL']
+          issue_num = os.environ['ISSUE_NUM']
+          
+          # 读取现有文件
+          try:
+            with open('data/activities.yml', 'r', encoding='utf-8') as f:
+              content = f.read()
+          except FileNotFoundError:
+            content = ""
+          
+          # 准备新数据
+          yaml_entry = f"""
 - title: "Activity from Issue"
-  description: "Activity extracted from ${{ github.event.inputs.url }}"
+  description: "Activity extracted from {url}"
   start_date: "2024-01-01"
   end_date: "2024-01-01"
   location: "Online"
-  url: "${{ github.event.inputs.url }}"
+  url: "{url}"
   tags: ["auto-extracted"]
-YAML_EOF
+"""
           
-          # 提交更改
+          # 追加到文件
+          with open('data/activities.yml', 'a', encoding='utf-8') as f:
+            f.write(yaml_entry)
+          
+          print("Activity data added to activities.yml")
+          PYTHON_EOF
+          
+          # 提交
           git add data/activities.yml
-          git commit -m "feat: Add activity from Issue #${{ github.event.inputs.issue_number }}"
-          git push origin "$branch_name"
+          git commit -m "feat: Add activity from Issue #$ISSUE_NUM"
+          git push origin "$BRANCH_NAME"
           
-          # 保存分支名称以供后续步骤使用
-          echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "ISSUE_NUM=$ISSUE_NUM" >> $GITHUB_ENV
       
-      - name: Create PR
+      - name: Create Pull Request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          ACTIVITY_URL="${{ github.event.inputs.url }}"
+          
           gh pr create \
-            --title "Add activity from Issue #${{ github.event.inputs.issue_number }}" \
-            --body "Automatically created PR with activity data from Issue #${{ github.event.inputs.issue_number }}
+            --title "Add activity from Issue #${{ env.ISSUE_NUM }}" \
+            --body "Automatically created PR with activity data.
 
-**Activity URL**: ${{ github.event.inputs.url }}
+**Activity URL**: ${ACTIVITY_URL}
 
 Please review and merge if the data is correct." \
             --head "${{ env.BRANCH_NAME }}" \
@@ -78,8 +102,4 @@ Please review and merge if the data is correct." \
           gh issue comment ${{ github.event.inputs.issue_number }} \
             --body "✅ **PR Created!**
 
-A pull request has been automatically created with the activity data.
-
-📝 Next steps:
-1. Review the PR
-2. Merge if correct"
+A pull request has been automatically created with the activity data."
