@@ -51,18 +51,33 @@ jobs:
           git push origin "$BRANCH_NAME"
       
       - name: Create Pull Request
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create \
-            --title "Add activity from Issue #${{ github.event.inputs.issue_number }}" \
-            --body "Activity data from: ${{ github.event.inputs.url }}" \
-            --head "${{ env.BRANCH_NAME }}" \
-            --base main
-      
-      - name: Comment on issue
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh issue comment ${{ github.event.inputs.issue_number }} \
-            --body "✅ PR Created! Activity data has been added."
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = "${{ env.BRANCH_NAME }}";
+            const url = "${{ github.event.inputs.url }}";
+            const issue = ${{ github.event.inputs.issue_number }};
+            
+            try {
+              const pr = await github.rest.pulls.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Add activity from Issue #${issue}`,
+                body: `Activity data from: ${url}`,
+                head: branch,
+                base: 'main'
+              });
+              
+              console.log(`✅ PR created: ${pr.data.html_url}`);
+              
+              // Comment on the issue
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue,
+                body: `✅ PR Created! [View PR](${pr.data.html_url})`
+              });
+            } catch (error) {
+              console.error(`Error: ${error.message}`);
+              throw error;
+            }
