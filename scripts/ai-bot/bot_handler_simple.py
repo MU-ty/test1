@@ -67,7 +67,24 @@ def main():
         print(f"❌ AI error: {str(e)}")
         return False
     
-    # 步骤3：格式化输出（供 Issue 评论显示）
+    # 步骤3：保存提取的数据为JSON（用于 PR 创建工作流）
+    activity_json = json.dumps({
+        'title': data.get('title', 'Untitled'),
+        'description': data.get('description', ''),
+        'start_date': data.get('start_date', ''),
+        'end_date': data.get('end_date', ''),
+        'location': data.get('location', 'Online'),
+        'url': url,
+        'tags': data.get('tags', []),
+        'registration_url': data.get('registration_url'),
+        'is_online': data.get('is_online', False),
+        'category': category
+    }, ensure_ascii=False)
+    
+    # 输出 JSON 供工作流使用
+    print(f"::ACTIVITY_JSON::{activity_json}")
+    
+    # 步骤4：格式化输出（供 Issue 评论显示）
     print("✅ **Activity Extracted Successfully!**")
     print("")
     print("📌 **Title**")
@@ -114,8 +131,9 @@ def main():
     print("---")
     print("")
     print("✨ **Next Steps:**")
-    print("- Review the extracted information above")
-    print("- Reply with feedback if any corrections are needed")
+    print("- Verify the extracted information above is accurate")
+    print("- A PR will be automatically created to add this activity to the data files")
+    print("- Please review and merge when ready")
     
     return True
 
